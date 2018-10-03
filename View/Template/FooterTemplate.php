@@ -31,7 +31,7 @@
                 </ul>
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a href="../../../P3AlaskaOCRDL/index.php">Administration du site</a>
+                        <a href="connexion">Administration du site</a>
                     </li>
                 </ul>
                 <p class="copyright text-muted">Copyright © P3Alaska 2018</p>
