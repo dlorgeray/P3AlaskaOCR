@@ -35,16 +35,18 @@ class PostController extends Controller
         $this->generateView( array ( 'post' => $post , 'comments' => $comments ) );
     }
 
-    // Ajoute un commentaire à un post
 
-
+    /**
+     * Ajoute un commentaire à un post
+     * @throws Exception
+     */
     public function comment ()
     {
         $idPost = $this->request->getSetting( "id" );
         $author = $this->request->getSetting( "author" );
         $content = $this->request->getSetting( "content" );
-
-        $this->comment->addComment( $author , $content , $idPost );
+        $status = $this->request->getSetting( "status" );
+        $this->comment->addComment( $author , $content , $idPost , $status );
 
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executeAction( "index" );
