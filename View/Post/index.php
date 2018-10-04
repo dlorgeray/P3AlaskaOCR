@@ -10,7 +10,7 @@
 </article>
 <hr/>
 <header>
-    <h1 id="titleReply">Réponses à <?= $this->clean( $post['title'] ) ?></h1>
+    <h1 id="titleReply">Commentaires sur le <?= $this->clean( $post['title'] ) ?></h1>
 </header>
 <?php foreach ($comments as $comment): ?>
     <p><?= $this->clean( $comment['author'] ) ?> dit :</p>
@@ -21,10 +21,12 @@
 <form method="post" action="post/comment">
     <input id="author" name="author" type="text" placeholder="Votre pseudo"
            required/><br/>
-    <textarea id="txtComment" name="content" rows="4"
+    <textarea id="txtComment" name="content" rows="5"
               placeholder="Votre commentaire" required></textarea><br/>
+    <input type="hidden" name="status" value="standby"/>
     <input type="hidden" name="id" value="<?= $post['id'] ?>"/>
     <input type="submit" value="Commenter"/>
+
 </form>
 
 
