@@ -6,7 +6,7 @@ require_once 'Framework/Model.php';
  *
  * @author Baptiste Pesquet
  */
-class User extends Model
+class Admin extends Model
 {
     /**
      * Vérifie qu'un utilisateur existe dans la BD
