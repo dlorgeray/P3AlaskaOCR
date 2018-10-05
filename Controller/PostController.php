@@ -13,6 +13,7 @@ class PostController extends Controller
 {
     private $post;
     private $comment;
+    private $reportComment;
 
     /**
      * Constructeur
@@ -45,11 +46,18 @@ class PostController extends Controller
         $idPost = $this->request->getSetting( "id" );
         $author = $this->request->getSetting( "author" );
         $content = $this->request->getSetting( "content" );
-        $status = $this->request->getSetting( "status" );
-        $this->comment->addComment( $author , $content , $idPost , $status );
+        $this->comment->addComment( $author , $content , $idPost );
 
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executeAction( "index" );
+    }
+
+    public function reportComment ()
+    {
+        $commentId = $this->request->getSetting( "idComment" );
+        $idPost = $this->request->getSetting( "idPost" );
+        $this->comment->report( $commentId );
+        $this->redirect( 'Post' , 'index/' . $idPost );
     }
 
 }
