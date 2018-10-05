@@ -13,7 +13,7 @@ class Comment extends Model
     public function getComments ( $idPost )
     {
         $sql = 'select COM_ID as id, COM_DATE as date,'
-            . ' COM_AUTHOR as author, COM_CONTENT as content, COM_STATUS as status from T_COMMENT'
+            . ' COM_AUTHOR as author, COM_CONTENT as content from T_COMMENT'
             . ' where BIL_ID=?';
         $comments = $this->executeRequest( $sql , array ( $idPost ) );
         return $comments;
@@ -26,12 +26,12 @@ class Comment extends Model
      * Ajoute un commentaire dans la base
      * @param $status
      */
-    public function addComment ( $author , $content , $idPost , $status )
+    public function addComment ( $author , $content , $idPost )
     {
-        $sql = 'insert into T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, BIL_ID,COM_STATUS)'
-            . ' values(?, ?, ?, ?, ?)';
+        $sql = 'insert into T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, BIL_ID)'
+            . ' values(?, ?, ?, ?)';
         $date = new DateTime(); // Récupère la date courante
-        $this->executeRequest( $sql , array ( $date->format( 'Y-m-d H:i:s' ) , $author , $content , $idPost , $status ) );
+        $this->executeRequest( $sql , array ( $date->format( 'Y-m-d H:i:s' ) , $author , $content , $idPost ) );
     }
 
     /**
@@ -45,5 +45,12 @@ class Comment extends Model
         $result = $this->executeRequest( $sql );
         $line = $result->fetch(); // Le résultat comporte toujours 1 ligne
         return $line['nbComments'];
+    }
+
+    public function report ( $idComment )
+    {
+        $sql = 'INSERT INTO T_COMMENT_REPORT(COM_ID, REPORT_DATE) VALUES (? ,?)';
+        $date = date( 'Y-m-d H:i:s' );
+        $this->executeRequest( $sql , [ $idComment , $date ] );
     }
 }

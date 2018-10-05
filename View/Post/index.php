@@ -15,6 +15,14 @@
 <?php foreach ($comments as $comment): ?>
     <p><?= $this->clean( $comment['author'] ) ?> dit :</p>
     <p><?= $this->clean( $comment['content'] ) ?></p>
+    <div class="col-sm-6">
+        <form method="post" action="post/reportComment">
+            <input type="hidden" name="idPost" value="<?= $post['id'] ?>"/>
+            <button type="submit" name="idComment" value="<?= $this->clean( $comment['id'] ) ?>"
+                    class="btn btn-secondary btn-sm">Signaler
+            </button>
+        </form>
+    </div>
 <?php endforeach; ?>
 
 <hr/>
@@ -23,7 +31,6 @@
            required/><br/>
     <textarea id="txtComment" name="content" rows="5"
               placeholder="Votre commentaire" required></textarea><br/>
-    <input type="hidden" name="status" value="standby"/>
     <input type="hidden" name="id" value="<?= $post['id'] ?>"/>
     <input type="submit" value="Commenter"/>
 
