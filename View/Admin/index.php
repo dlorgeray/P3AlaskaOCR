@@ -32,7 +32,7 @@ Ce blog comporte <?= $this->clean( $nbPosts ) ?> billet(s) et
     </div>
     <hr>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-auto-12">
             <header>
                 <h2>Gérer les billets</h2>
             </header>
@@ -43,6 +43,7 @@ Ce blog comporte <?= $this->clean( $nbPosts ) ?> billet(s) et
                         <th scope="col">Titre</th>
                         <th scope="col">Date de création</th>
                         <th scope="col">Éditer</th>
+                        <th scope="col">Supprimer</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,8 +53,10 @@ Ce blog comporte <?= $this->clean( $nbPosts ) ?> billet(s) et
                             <td>
                                 <time><?= $this->clean( $post['date'] ) ?></time>
                             </td>
-                            <td><a class="btn btn-primary btn-sm"
+                            <td><a class="btn btn-primary btn-xs"
                                    href="<?= "admin/editPost/" . $this->clean( $post['id'] ) ?>">Editer</a></td>
+                            <td><a class="btn btn-primary btn-xs"
+                                   href="<?= "admin/deletePost/" . $this->clean( $post['id'] ) ?>">Supprimer</a></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

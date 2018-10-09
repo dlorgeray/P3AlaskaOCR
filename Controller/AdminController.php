@@ -56,6 +56,9 @@ class AdminController extends SecureController
         $this->generateView( array ( 'post' => $post ) );
     }
 
+    /**
+     * Sauvegarde des modifications d'un chapitre
+     */
     public function savePost ()
     {
 
@@ -70,5 +73,12 @@ class AdminController extends SecureController
 
         $this->post->update( $title , $content , $idPost );
         $this->redirect( 'admin' , 'editPost/' . $idPost );
+    }
+
+    public function deletePost ()
+    {
+        $idPost = $this->request->getSetting( 'id' );
+        $this->post->delete( $idPost );
+        $this->redirect( 'Admin' , 'index/' );
     }
 }

@@ -62,6 +62,12 @@ class Post extends Model
         $this->executeRequest( $sql , [ $title , $content , $date , $status ] );
     }
 
+    /**
+     * Mise à jour d'un chapitre
+     * @param $title
+     * @param $content
+     * @param $idPost
+     */
     public function update ( $title , $content , $idPost )
     {
         $sql = 'UPDATE T_BILLET SET BIL_TITLE = ?, BIL_CONTENT = ?, BIL_UPDATE_DATE= ? WHERE BIL_ID = ?';
@@ -69,5 +75,14 @@ class Post extends Model
         $this->executeRequest( $sql , [ $title , $content , $date , $idPost ] );
     }
 
+    /**
+     * Suppression d'un chapitre et des éventuels commentaires associés
+     * @param $idPost
+     */
+    public function delete ( $idPost )
+    {
+        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = ?; DELETE FROM T_COMMENT WHERE BIL_ID = ?';
+        $this->executeRequest( $sql , [ $idPost , $idPost ] );
+    }
 }
 
