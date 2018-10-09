@@ -13,7 +13,7 @@ Ce blog comporte <?= $this->clean( $nbPosts ) ?> billet(s) et
     <div class="row">
         <div class="col-md-12">
             <header>
-                <h2>Écrire un nouveau chapitre</h2>
+                <h3>Écrire un nouveau chapitre</h3>
             </header>
             <form action="admin/writing" method="post">
                 <div class="form-group">
@@ -28,6 +28,37 @@ Ce blog comporte <?= $this->clean( $nbPosts ) ?> billet(s) et
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <header>
+                <h2>Gérer les billets</h2>
+            </header>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Date de création</th>
+                        <th scope="col">Éditer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($posts as $post): ?>
+                        <tr>
+                            <td><?= $this->clean( $post['title'] ) ?></td>
+                            <td>
+                                <time><?= $this->clean( $post['date'] ) ?></time>
+                            </td>
+                            <td><a class="btn btn-primary btn-sm"
+                                   href="<?= "admin/editPost/" . $this->clean( $post['id'] ) ?>">Editer</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <hr>

@@ -24,9 +24,11 @@ class AdminController extends SecureController
     {
         $nbPosts = $this->post->getPostsNomber();
         $nbComments = $this->comment->getCommentsNomber();
+        $posts = $this->post->getPosts();
         $login = $this->request->getSession()->getAttribut( "login" );
         $this->generateView( array ( 'nbPosts' => $nbPosts ,
-            'nbComments' => $nbComments , 'login' => $login ) );
+            'nbComments' => $nbComments , 'posts' => $posts , 'login' => $login ) );
+
     }
 
     /**
@@ -42,5 +44,31 @@ class AdminController extends SecureController
         }
         $this->post->create( $title , $content );
         $this->redirect( 'Admin' , 'index/' );
+    }
+
+    /**
+     * Editer un chapitre existant
+     */
+    public function editPost ()
+    {
+        $idPost = $this->request->getSetting( "id" );
+        $post = $this->post->getPost( $idPost );
+        $this->generateView( array ( 'post' => $post ) );
+    }
+
+    public function savePost ()
+    {
+
+        $idPost = $this->request->getSetting( "id" );
+        $title = $this->request->getSetting( "title" );
+
+        if ($this->request->existSetting( "content" )) {
+            $content = $this->request->getSetting( "content" );
+        } else {
+            $content = '';
+        }
+
+        $this->post->update( $title , $content , $idPost );
+        $this->redirect( 'admin' , 'editPost/' . $idPost );
     }
 }
