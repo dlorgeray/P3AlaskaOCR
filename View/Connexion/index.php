@@ -6,7 +6,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="page-heading">
                         <h3>Administration du site</h3>
-                        <span class="subheading">Connectez-vous pour accéder à l'administration du site</span>
+                        <span class="subheading">Connectez-vous pour accéder au tableau de bord de votre roman</span>
                     </div>
                     <form action="connexion/connect" method="post"
                           name="sentMessage" id="contactForm" novalidate>
