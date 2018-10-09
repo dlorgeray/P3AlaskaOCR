@@ -61,4 +61,13 @@ class Post extends Model
         $status = "in progress";
         $this->executeRequest( $sql , [ $title , $content , $date , $status ] );
     }
+
+    public function update ( $title , $content , $idPost )
+    {
+        $sql = 'UPDATE T_BILLET SET BIL_TITLE = ?, BIL_CONTENT = ?, BIL_UPDATE_DATE= ? WHERE BIL_ID = ?';
+        $date = date( 'Y-m-d H:i:s' );
+        $this->executeRequest( $sql , [ $title , $content , $date , $idPost ] );
+    }
+
 }
+
