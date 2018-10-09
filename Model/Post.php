@@ -48,4 +48,17 @@ class Post extends Model
         $line = $result->fetch(); // Le résultat comporte toujours 1 ligne
         return $line['nbPosts'];
     }
+
+    /**
+     * Créer un nouveau chapitre
+     * @param $title
+     * @param $content
+     */
+    public function create ( $title , $content )
+    {
+        $sql = 'INSERT INTO T_BILLET(BIL_TITLE, BIL_CONTENT, BIL_DATE, BIL_STATUS) VALUES(? ,? ,?, ?)';
+        $date = date( 'Y-m-d H:i:s' );
+        $status = "in progress";
+        $this->executeRequest( $sql , [ $title , $content , $date , $status ] );
+    }
 }
