@@ -42,7 +42,7 @@ class Router
     private function createController ( Request $request )
     {
         // Grâce à la redirection, toutes les URL entrantes sont du type :
-        // index.php?controleur=XXX&action=YYY&id=ZZZ
+        // managePost.php?controleur=XXX&action=YYY&id=ZZZ
 
         $controller = "Home";  // Contrôleur par défaut
         if ($request->existSetting( 'controller' )) {
