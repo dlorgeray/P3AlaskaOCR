@@ -41,7 +41,7 @@ class ConnexionController extends Controller
                 "Action impossible : login ou mot de passe non défini" );
     }
 
-    public function deconnect ()
+    public function disconnect ()
     {
         $this->request->getSession()->destroy();
         $this->redirect( "home" );
