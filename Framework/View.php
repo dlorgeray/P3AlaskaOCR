@@ -6,11 +6,17 @@ require_once 'Config.php';
  */
 class View
 {
+    const MAIN_LAYOUT = 'View/template.php';
+    const ADMIN_LAYOUT = 'View/adminTemplate.php';
+
+
     /** Nom du fichier associé à la vue */
     private $file;
 
     /** Titre de la vue (défini dans le fichier vue) */
     private $title;
+
+    private $template;
 
     /**
      * Constructeur
@@ -18,7 +24,7 @@ class View
      * @param string $action Action à laquelle la vue est associée
      * @param string $controleur Nom du contrôleur auquel la vue est associée
      */
-    public function __construct ( $action , $controller = "" )
+    public function __construct ( $action , $controller = "" , $template = self::MAIN_LAYOUT )
     {
         // Détermination du nom du fichier vue à partir de l'action et du constructeur
         // La convention de nommage des fichiers vues est : Vue/<$controleur>/<$action>.php
@@ -27,6 +33,7 @@ class View
             $file = $file . $controller . "/";
         }
         $this->file = $file . $action . ".php";
+        $this->template = $template;
     }
 
     /**
@@ -44,7 +51,7 @@ class View
         // Nécessaire pour les URI de type controleur/action/id
         $rootWeb = Config::get( "rootWeb" , "/" );
         // Génération du gabarit commun utilisant la partie spécifique
-        $view = $this->generateFile( 'View/template.php' ,
+        $view = $this->generateFile( $this->template ,
             array ( 'title' => $this->title , 'content' => $content ,
                 'rootWeb' => $rootWeb ) );
         // Renvoi de la vue générée au navigateur
