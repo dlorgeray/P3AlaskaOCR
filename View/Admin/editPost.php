@@ -1,14 +1,8 @@
-<?php $this->title = "Administration - Billet" ?>
 <?php $this->title = "Billet simple pour l'Alaska - Administration - Modification d'un chapitre " ?>
-<header>
-    <div class="post-preview" xmlns="http://www.w3.org/1999/html">
-        <h2>Administration - Modification d'un chapitre</h2>
-    </div>
-</header>
-<hr>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
+<div class="right_col" role="main">
+    <h2>Administration - Modification d'un chapitre</h2>
+
+    <div class="col-md-12">
             <header>
                 <h3>Modifier chapitre</h3>
             </header>
@@ -20,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Votre texte</label><br>
-                    <textarea rows="3" class="form-control" id="content"
+                    <textarea rows="3" class="admin-editor" id="content"
                               name="content"/><?= $this->clean( $post['content'] ) ?></textarea>
                 </div>
                 <div class="form-group">
@@ -28,16 +22,14 @@
                 </div>
             </form>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <span style="color: #bfbfbf; font-size: 1rem; font-weight: 400;">Aperçu du billet</span>
+
+    <div class="col-md-12">
+        <span style="color: #bfbfbf; font-size: 1rem; font-weight: 400;">Aperçu du Chapitre</span>
         </div>
-        <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-md-12">
             <h3><?= $this->clean( $post['title'] ) ?></h3>
             <time>Crée le : <?= $this->clean( $post['date'] ) ?></time>
             <p><?= $post['content'] ?></p>
         </div>
-    </div>
 </div>
