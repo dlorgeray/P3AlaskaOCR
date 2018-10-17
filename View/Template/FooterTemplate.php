@@ -31,7 +31,7 @@
                 </ul>
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a href="connexion">Administration du site</a>
+                        <a href="admin">Administration du site</a>
                     </li>
                 </ul>
                 <p class="copyright text-muted">Copyright © P3Alaska 2018</p>
