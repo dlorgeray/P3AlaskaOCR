@@ -49,8 +49,22 @@ class Comment extends Model
 
     public function report ( $idComment )
     {
-        $sql = 'INSERT INTO T_COMMENT_REPORT(COM_ID, REPORT_DATE) VALUES (? ,?)';
+        $sql = 'INSERT INTO t_comment_report (COM_ID, REPORT_DATE) VALUES (? ,?)';
         $date = date( 'Y-m-d H:i:s' );
         $this->executeRequest( $sql , [ $idComment , $date ] );
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllComments ()
+    {
+        $sql = 'SELECT BIL_ID as id, COM_DATE as date, COM_AUTHOR as author, COM_CONTENT as content, COM_ID as id FROM T_COMMENT ORDER BY BIL_ID';
+        $allComments = $this->executeRequest( $sql );
+        return $allComments;
+    }
+
+    public function manageReportComment ()
+    {
     }
 }
