@@ -43,11 +43,17 @@ class PostController extends Controller
      */
     public function comment ()
     {
+        if (strlen( $this->request->getSetting( "content" ) ) > 10) {
         $idPost = $this->request->getSetting( "id" );
         $author = $this->request->getSetting( "author" );
         $content = $this->request->getSetting( "content" );
-        $this->comment->addComment( $author , $content , $idPost );
 
+        $this->comment->addComment( $author , $content , $idPost );
+            $this->redirect( 'Post' , 'index/' . $idPost );
+
+        } else {
+            echo "Votre commentaire est trop court, un petit effort...";
+        }
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executeAction( "index" );
     }
@@ -60,4 +66,15 @@ class PostController extends Controller
         $this->redirect( 'Post' , 'index/' . $idPost );
     }
 
+    public function listPost ()
+    {
+        $posts = $this->post->getPosts();
+        $this->generateView( array ( 'posts' => $posts ) );
+    }
+
+    public function lastPost ()
+    {
+        $posts = $this->post->getlastPost();
+        $this->generateView( array ( 'posts' => $posts ) );
+    }
 }

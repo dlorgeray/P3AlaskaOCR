@@ -13,7 +13,7 @@ class Post extends Model
 
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
             . ' BIL_TITLE as title, BIL_CONTENT as content from T_BILLET'
-            . ' order by BIL_ID desc';
+            . ' order by BIL_ID';
         $posts = $this->executeRequest( $sql );
         return $posts;
     }
@@ -83,6 +83,16 @@ class Post extends Model
     {
         $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = ?; DELETE FROM T_COMMENT WHERE BIL_ID = ?';
         $this->executeRequest( $sql , [ $idPost , $idPost ] );
+    }
+
+    public function getlastPost ()
+    {
+
+        $sql = 'SELECT BIL_ID as id, BIL_DATE as date,'
+            . ' BIL_TITLE as title, BIL_CONTENT as content FROM T_BILLET'
+            . ' ORDER BY BIL_ID DESC LIMIT 1';
+        $posts = $this->executeRequest( $sql );
+        return $posts;
     }
 }
 
