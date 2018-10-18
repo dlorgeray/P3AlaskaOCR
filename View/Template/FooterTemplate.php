@@ -1,51 +1,24 @@
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8  col-md-8 mx-auto">
-                <ul class="list-inline text-center">
-                    <li class="list-inline-item">
-                        <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                  </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                  </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="list-inline text-center">
-                    <li class="list-inline-item">
-                        <a href="admin">Administration du site</a>
-                    </li>
-                </ul>
-                <p class="copyright text-muted">Copyright © P3Alaska 2018</p>
-            </div>
-        </div>
-    </div>
-</footer>
 
+<!-- Footer -->
+<footer id="footer">
+    <ul class="copyright">
+        <li>Copyright © P3Alaska 2018</li>
+    </ul>
+</footer>
 <!-- Bootstrap core JavaScript -->
 <script src="./Content/vendor/jquery/jquery.min.js"></script>
 <script src="./Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./Content/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for this template -->
 <script src="./Content/js/clean-blog.min.js"></script>
+<script src="./Content/js/jquery.min.js"></script>
+<script src="./Content/js/jquery.scrollex.min.js"></script>
+<script src="./Content/js/jquery.scrolly.min.js"></script>
+<script src="./Content/js/skel.min.js"></script>
+<script src="./Content/js/util.js"></script>
+<script src="./Content/js/main.js"></script>
+<script src="./Content/js/stylish-portfolio.js"></script>
 
 </body>
 
