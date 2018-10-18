@@ -22,7 +22,7 @@
   "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.3.1.tgz",
   "_shasum": "5466b8f31c1f493a96754c1426c25796d0633dd9",
   "_spec": "@fortawesome/fontawesome-free@5.3.1",
-  "_where": "/Users/DANGER_DAVID/Sites/startbootstrap-themes/startbootstrap-clean-blog",
+  "_where": "/Users/DANGER_DAVID/Sites/startbootstrap-themes/startbootstrap-freelancer",
   "author": {
     "name": "Dave Gandy",
     "email": "dave@fontawesome.com",
@@ -70,12 +70,12 @@
     "bootstrap"
   ],
   "license": "(CC-BY-4.0 AND OFL-1.1 AND MIT)",
-  "main": "Content/js/fontawesome.js",
+  "main": "js/fontawesome.js",
   "name": "@fortawesome/fontawesome-free",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FortAwesome/Font-Awesome.git"
   },
-  "style": "Content/css/fontawesome.css",
+  "style": "css/fontawesome.css",
   "version": "5.3.1"
 }
