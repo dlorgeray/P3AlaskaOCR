@@ -1,5 +1,5 @@
 <div class="navbar nav_title" style="border: 0;">
-    <a href="index.php" class="site_title"><i class="fa fa-paw"></i> <span>Tableau de Bord</span></a>
+    <a href="admin" class="site_title"><span>Tableau de Bord</span></a>
 </div>
 
 <div class="clearfix"></div>
@@ -26,6 +26,7 @@
             <li><a><i class="fa fa-home"></i> Accueil <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="Admin">Tableau de Bord</a></li>
+                    <li><a href="Home">Retour sur le blog</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-edit"></i> Gestion Chapitres <span class="fa fa-chevron-down"></span></a>
@@ -47,7 +48,7 @@
 
 <!-- /menu footer buttons -->
 <div class="sidebar-footer hidden-small">
-    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+    <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="login.html">
         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
     </a>
 </div>

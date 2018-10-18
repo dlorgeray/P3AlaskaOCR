@@ -7,7 +7,6 @@
             <div class="left_col scroll-view">
 
                 <?php include('View/Template/AdminNavTemplate.php'); ?>
-
                 <!-- content -->
 
                 <?= $content ?>

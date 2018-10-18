@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 
 <head>
 
@@ -14,30 +14,26 @@
     <link href="Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="./Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-          rel='stylesheet' type='text/css'>
+    <link href="Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
+    <!-- Custom Fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link href="Content/vendor/magnific-popup.css/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="/Content/tinymce/tinymce.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="./Content/css/clean-blog.min.css" rel="stylesheet">
-
+    <link href="./Content/css/freelancer.min.css" rel="stylesheet">
+    <link href="./Content/css/clean-blog.css" rel="stylesheet">
+    <link href="./Content/css/stylish-portfolio.css" rel="stylesheet">
 </head>
-<body>
+<body id="page-top">
 <?php include('View/Template/NavTemplate.php'); ?>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('./Content/img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    <h1>Billet Simple pour l'Alaska</h1>
-                    <span class="subheading">de Jean FORTEROCHE</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
