@@ -1,5 +1,6 @@
 <?php $this->title = "Billet simple pour l'Alaska - Administration - Modification d'un chapitre " ?>
 <div class="right_col" role="main">
+
     <h2>Administration - Modification d'un chapitre</h2>
 
     <div class="col-md-12">
