@@ -48,7 +48,7 @@
 
 <!-- /menu footer buttons -->
 <div class="sidebar-footer hidden-small">
-    <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="login.html">
+    <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="Connexion/disconnect">
         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
     </a>
 </div>

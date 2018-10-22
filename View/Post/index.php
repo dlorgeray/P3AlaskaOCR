@@ -24,7 +24,8 @@
 
 <!-- Commentaires -->
 <section class="wrapper style2">
-    <div class="inner">
+    <div id="comment" class="inner">
+        <?php $this->getFlash() ?>
         <header id="liste" class="major">
             <h3 id="titleReply">Commentaires des lecteurs sur le <?= $this->clean( $post['title'] ) ?></h3>
         </header>
@@ -49,13 +50,15 @@
 <hr/>
 <section class="wrapper style2">
     <div class="inner">
-        <header id="liste" class="major">
-            <h3>Ajouter un commentaire</h3>
-            <form action="post/comment" method="post" name="sentComment">
+
+        <h3>Ajouter un commentaire</h3>
+
+        <form action="post/comment" onSubmit="return actionlimite();" method="post" name="sentComment">
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <label>Pseudo</label>
-                        <input class="form-control" name="author" type="text" placeholder="Votre pseudo" value="">
+                        <input class="form-control" name="author" onkeydown="limites(this);" type="text"
+                               placeholder="Votre pseudo" value="">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
@@ -63,7 +66,7 @@
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <label>Votre commentaire</label>
                         <textarea class="form-control" name="content" rows="5"
-                                  placeholder="Votre commentaire"></textarea>
+                                  onKeyUp="limite(this);" placeholder="Votre commentaire" required></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
@@ -76,7 +79,7 @@
 
             </form>
     </div>
-    </div>
+</section>
 
     <script>
         var total = 0;
@@ -93,6 +96,9 @@
             }
         }
 
+        function limites(input) {
+            total = input.value.length;
+        }
         function limite(textarea) {
             total = textarea.value.length;
         }
