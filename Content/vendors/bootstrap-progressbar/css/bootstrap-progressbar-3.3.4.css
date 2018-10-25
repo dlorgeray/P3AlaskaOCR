@@ -104,7 +104,7 @@
 
 .progress .progress-bar {
     position: absolute;
-    overflow: hidden;
+
     line-height: 20px;
 }
 

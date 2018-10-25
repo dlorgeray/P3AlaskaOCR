@@ -1,8 +1,8 @@
 /**
  * Resize function without multiple trigger
- *
+ * 
  * Usage:
- * $(window).smartresize(function(){
+ * $(window).smartresize(function(){  
  *     // code here
  * });
  */
@@ -273,6 +273,7 @@ function countChecked() {
         $('.bulk-actions').hide();
     }
 }
+
 
 
 // Accordion
