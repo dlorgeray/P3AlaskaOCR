@@ -1,8 +1,13 @@
-<div class="navbar nav_title" style="border: 0;">
-    <a href="admin" class="site_title"><span>Tableau de Bord</span></a>
-</div>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="admin" class="site_title"><span>Tableau de Bord</span></a>
+                </div>
 
-<div class="clearfix"></div>
+                <div class="clearfix"></div>
 
 <!-- menu profile quick info -->
 <div class="profile clearfix">
@@ -37,7 +42,8 @@
             </li>
             <li><a><i class="fa fa-comments-o"></i> Gestion commentaires <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="Admin/manageComment">Gérer les commentaires</a></li>
+                    <li><a href="Admin/allComments">Lire tous les commentaires</a></li>
+                    <li><a href="Admin/reportedComments">Gérer les commentaires signalés</a></li>
                 </ul>
             </li>
         </ul>
@@ -49,7 +55,7 @@
 <!-- /menu footer buttons -->
 <div class="sidebar-footer hidden-small">
     <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="Connexion/disconnect">
-        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        <span class="fa fa-sign-out pull" aria-hidden="true"></span>
     </a>
 </div>
 <!-- /menu footer buttons -->
