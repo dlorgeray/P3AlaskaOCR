@@ -43,9 +43,6 @@ class AdminController extends SecureController
     {
         $nbPosts = $this->post->getPostsNomber();
         $nbComments = $this->comment->getCommentsNomber();
-        /**
-         *$nbReports = $this->report->getReportsComment();
-         */
         $posts = $this->post->getPosts();
         $login = $this->request->getSession()->getAttribut( "login" );
         $this->generateView(
@@ -67,6 +64,13 @@ class AdminController extends SecureController
         }
         $this->post->create( $title , $content );
         $this->redirect( 'Admin' , 'index/' );
+    }
+
+    public function publishPost ()
+    {
+        $idPost = $this->request->getSetting( "id" );
+        $this->post->publish( $idPost );
+        $this->redirect( 'Admin' , 'managePost/' );
     }
 
     public function writePost ()
@@ -106,13 +110,43 @@ class AdminController extends SecureController
     public function deletePost ()
     {
         $idPost = $this->request->getSetting( 'id' );
-        $this->post->delete( $idPost );
+        $this->post->deletePost( $idPost );
         $this->redirect( 'Admin' , 'managePost/' . $idPost );
     }
 
-    public function manageComment ()
+    public function deleteComment ()
     {
-        $allComments = $this->comment->getAllComments();
+        $idPost = $this->request->getSetting( 'idComment' );
+        $this->post->deleteComment( $idPost );
+        $this->redirect( 'Admin' , 'allComments/' );
+    }
+
+    public function allComments ()
+    {
+        $allComments = $this->comment->getAllComments( false );
         $this->generateView( array ( 'allComments' => $allComments ) );
     }
+
+    public function reportedComments ()
+    {
+        $reportedComments = $this->comment->getAllComments( true );
+        $this->generateView( array ( 'reportedComments' => $reportedComments ) );
+    }
+
+    // Action to delete a comment and its reports when exist from DB
+    public function deleteReportedComment ()
+    {
+        $idComment = $this->request->getSetting( 'id' );
+        $this->comment->deleteComment( $idComment );
+        $this->redirect( 'Admin' , 'allComments/' );
+    }
+
+    // Action to validate - moderate an existing comment by removing reports
+    public function valideReportedComment ()
+    {
+        $idComment = $this->request->getSetting( "id" );
+        $this->comment->deleteReports( $idComment );
+        $this->redirect( 'Admin' , 'reportedComments' );
+    }
+
 }
