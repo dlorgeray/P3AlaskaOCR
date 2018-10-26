@@ -15,6 +15,7 @@
                         <th scope="col">Auteur</th>
                         <th scope="col">Commentaire</th>
                         <th scope="col">Signalement</th>
+                        <th scope="col">Supprimer</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,12 +27,10 @@
                             </td>
                             <td><?= $this->clean( $comment['author'] ) ?></td>
                             <td><?= $this->clean( $comment['content'] ) ?></td>
-                            <td><?php if ($comment['idReport'] == null) {
-                                    echo $comment['idReport'] = 'NON';
-                                } else {
-                                    echo $comment['idReport'] = 'OUI';
-                                }
-                                ?></td>
+                            <td><?= ($comment['nbReports']) ? "OUI" : "NON" ?></td>
+                            <td><a class="btn btn-danger btn-xs"
+                                   href="<?= "admin/deleteReportedComment/" . $this->clean( $comment['idComment'] ) ?>">Supprimer</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
