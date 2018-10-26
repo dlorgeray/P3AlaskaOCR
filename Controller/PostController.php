@@ -43,19 +43,14 @@ class PostController extends Controller
      */
     public function comment ()
     {
-        if (strlen( $this->request->getSetting( "content" ) ) > 10) {
+        $this->request->getSetting( "content" );
         $idPost = $this->request->getSetting( "id" );
         $author = $this->request->getSetting( "author" );
         $content = $this->request->getSetting( "content" );
 
         $this->comment->addComment( $author , $content , $idPost );
-            $this->redirect( 'Post' , 'index/' . $idPost );
-
-        } else {
-            echo "Votre commentaire est trop court, un petit effort...";
-        }
-        // Exécution de l'action par défaut pour réafficher la liste des billets
-        $this->executeAction( "index" );
+        $this->request->getSession()->setFlash( 'Commentaire ajouté' , 'success' );
+        $this->redirect( 'Post' , 'index/' . $idPost . '#comment' );
     }
 
     public function reportComment ()
@@ -63,18 +58,19 @@ class PostController extends Controller
         $commentId = $this->request->getSetting( "idComment" );
         $idPost = $this->request->getSetting( "idPost" );
         $this->comment->report( $commentId );
-        $this->redirect( 'Post' , 'index/' . $idPost );
+        $this->request->getSession()->setFlash( 'Commentaire signalé' , 'warning' );
+        $this->redirect( 'Post' , 'index/' . $idPost . '#comment' );
     }
 
     public function listPost ()
     {
-        $posts = $this->post->getPosts();
+        $posts = $this->post->getPublishPosts();
         $this->generateView( array ( 'posts' => $posts ) );
     }
 
     public function lastPost ()
     {
-        $posts = $this->post->getlastPost();
-        $this->generateView( array ( 'posts' => $posts ) );
+        $idPost = $this->post->getlastPostId();
+        $this->redirect( 'Post' , 'index/' . $idPost );
     }
 }
