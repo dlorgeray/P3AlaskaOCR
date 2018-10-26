@@ -57,14 +57,44 @@ class Comment extends Model
     /**
      * @return mixed
      */
-    public function getAllComments ()
+    public function getAllComments ( $only_reported = false )
     {
-        $sql = 'SELECT BIL_ID as id, COM_DATE as date, COM_AUTHOR as author, COM_CONTENT as content, COM_ID as id FROM T_COMMENT ORDER BY BIL_ID';
+        $only_reported_sql = ($only_reported) ? " HAVING nbReports > 0 " : "";
+        $order_sql = ($only_reported) ? " ORDER BY nbReports DESC " : " ORDER BY COM_DATE DESC";
+
+        $sql = 'SELECT BIL_ID as id, COM_DATE as date, COM_AUTHOR as author, COM_CONTENT as content,t_comment.COM_ID as idComment,t_comment_report.COM_ID as idReportComment, COUNT(DISTINCT t_comment_report.REPORT_ID) as nbReports
+                FROM T_COMMENT
+                LEFT JOIN t_comment_report
+                ON t_comment.COM_ID = t_comment_report.COM_ID
+                GROUP BY t_comment.COM_ID' .
+            $only_reported_sql . $order_sql;
         $allComments = $this->executeRequest( $sql );
         return $allComments;
     }
 
-    public function manageReportComment ()
+    /**
+     * Delete a comment and its reports when exist from DB
+     *
+     * @param int $idComment Comment id
+     */
+    public function deleteComment ( $idComment )
     {
+        $sql = 'DELETE FROM T_COMMENT WHERE t_comment.COM_ID = ?';
+        $this->executeRequest( $sql , [ $idComment ] );
     }
+
+    /**
+     *
+     * Validate a reported comment by deleting reports from DB
+     *
+     * @param int $idComment
+     */
+    public function deleteReports ( $idComment )
+    {
+        $sql = 'DELETE FROM t_comment_report WHERE t_comment_report.COM_ID = ? ';
+        $this->executeRequest( $sql , [ $idComment ] );
+    }
+
+
 }
+
