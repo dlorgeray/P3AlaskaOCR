@@ -1,5 +1,5 @@
 <?php $this->title = "Billet simple pour l'Alaska - Administration - Modification d'un chapitre " ?>
-<div class="right_col" role="main">
+<div class="right_col" role="main" xmlns="http://www.w3.org/1999/html">
 
     <h2>Administration - Modification d'un chapitre</h2>
 
@@ -24,13 +24,13 @@
             </form>
         </div>
 
-
-    <div class="col-md-12">
         <span style="color: #bfbfbf; font-size: 1rem; font-weight: 400;">Aperçu du Chapitre</span>
-        </div>
-    <div class="col-md-12">
-            <h3><?= $this->clean( $post['title'] ) ?></h3>
+
+
+    <h3><?= $this->clean( $post['title'] ) ?></h3>
             <time>Crée le : <?= $this->clean( $post['date'] ) ?></time>
             <p><?= $post['content'] ?></p>
-        </div>
+    </br>
+
+
 </div>
