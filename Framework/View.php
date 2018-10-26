@@ -108,4 +108,13 @@ class View
         }
         return $text;
     }
+
+    public function getFlash ()
+    {
+        if (isset( $_SESSION['flash']['message'] )) {
+            include('View/_messageFlash.php');
+            unset( $_SESSION['flash']['message'] );
+            unset( $_SESSION['flash']['type'] );
+        }
+    }
 }
