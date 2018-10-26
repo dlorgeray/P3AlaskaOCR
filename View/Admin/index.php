@@ -12,7 +12,7 @@
                 </div>
             </div>
         </a>
-        <a href="admin/manageComment">
+        <a href="admin/allComments">
             <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                     <div class="icon"><i class="fa fa-comments-o"></i></div>
@@ -22,22 +22,16 @@
                 </div>
                 </div>
         </a>
+        <a href="Admin/reportedComments"
         <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="tile-stats">
-                <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                <div class="icon"><i class="fa fa-check-square-o"></i></div>
                 <div class="count"><?= $this->clean( $nbReports ) ?></div>
                 <h3>Commentaires signalés</h3>
                 <p></p>
             </div>
         </div>
-        <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="tile-stats">
-                <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                <div class="count">A faire</div>
-                <h3>A voir</h3>
-                <p></p>
-            </div>
-        </div>
+        </a>
     </div>
 </div>
 
