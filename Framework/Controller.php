@@ -89,10 +89,10 @@ abstract class Controller
      * @param string $controleur Contrôleur
      * @param type $action Action Action
      */
-    protected function redirect ( $controller , $action = null )
+    protected function redirect ( $controller , $action = null , $ancre = null )
     {
         $rootWeb = Config::get( "rootWeb" , "/" );
 // Redirection vers l'URL racine_site/controleur/action
-        header( "Location:" . $rootWeb . $controller . "/" . $action );
+        header( "Location:" . $rootWeb . $controller . "/" . $action . $ancre );
     }
 }
