@@ -3,7 +3,7 @@
     <div class="row top_tiles">
 
         <a href="admin/managePost">
-            <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="tile-stats">
                     <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
                     <div class="count"><?= $this->clean( $nbPosts ) ?></div>
@@ -13,7 +13,7 @@
             </div>
         </a>
         <a href="admin/allComments">
-            <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="tile-stats">
                     <div class="icon"><i class="fa fa-comments-o"></i></div>
                     <div class="count"><?= $this->clean( $nbComments ) ?></div>
@@ -23,7 +23,7 @@
                 </div>
         </a>
         <a href="Admin/reportedComments"
-        <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-check-square-o"></i></div>
                 <div class="count"><?= $this->clean( $nbReports ) ?></div>

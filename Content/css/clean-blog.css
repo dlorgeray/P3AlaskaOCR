@@ -2393,6 +2393,7 @@ header.major h2:after, header.major h3:after, header.major h4:after, header.majo
 header.major p {
     color: #fff;
     top: 0;
+    margin-top: 20px;
 }
 
 @media screen and (max-width: 736px) {

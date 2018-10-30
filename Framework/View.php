@@ -1,13 +1,13 @@
 <?php
-require_once 'Config.php';
+require_once './Framework/Config.php';
 
 /**
  * Classe modélisant une vue
  */
 class View
 {
-    const MAIN_LAYOUT = 'View/template.php';
-    const ADMIN_LAYOUT = 'View/adminTemplate.php';
+    const MAIN_LAYOUT = './View/template.php';
+    const ADMIN_LAYOUT = './View/adminTemplate.php';
 
 
     /** Nom du fichier associé à la vue */
@@ -44,16 +44,25 @@ class View
     public function generate ( $datas )
     {
         // Génération de la partie spécifique de la vue
-        $content = $this->generateFile( $this->file , $datas );
+        try {
+            $content = $this->generateFile( $this->file , $datas );
+        } catch (Exception $e) {
+        }
 
         // On définit une variable locale accessible par la vue pour la racine Web
         // Il s'agit du chemin vers le site sur le serveur Web
         // Nécessaire pour les URI de type controleur/action/id
-        $rootWeb = Config::get( "rootWeb" , "/" );
+        try {
+            $rootWeb = Config::get( "rootWeb" , "/" );
+        } catch (Exception $e) {
+        }
         // Génération du gabarit commun utilisant la partie spécifique
-        $view = $this->generateFile( $this->template ,
-            array ( 'title' => $this->title , 'content' => $content ,
-                'rootWeb' => $rootWeb ) );
+        try {
+            $view = $this->generateFile( $this->template ,
+                array ( 'title' => $this->title , 'content' => $content ,
+                    'rootWeb' => $rootWeb ) );
+        } catch (Exception $e) {
+        }
         // Renvoi de la vue générée au navigateur
         echo $view;
     }

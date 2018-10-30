@@ -1,5 +1,5 @@
 <?php
-require_once 'Framework/Model.php';
+require_once './Framework/Model.php';
 
 /**
  * Modélise un utilisateur du blog
@@ -17,7 +17,7 @@ class Admin extends Model
      */
     public function connect ( $login , $mdp )
     {
-        $sql = "select UTIL_ID, UTIL_MDP from T_UTILISATEUR where UTIL_LOGIN=?";
+        $sql = "select UTIL_ID, UTIL_MDP from t_utilisateur where UTIL_LOGIN=?";
         $user = $this->executeRequest( $sql , array ( $login ) )->fetch();
 
         if ($user) {
@@ -38,7 +38,7 @@ class Admin extends Model
      */
     public function getUser ( $login )
     {
-        $sql = "select UTIL_ID as idUser, UTIL_LOGIN as login from T_UTILISATEUR where UTIL_LOGIN=?";
+        $sql = "select UTIL_ID as idUser, UTIL_LOGIN as login from t_utilisateur where UTIL_LOGIN=?";
         $user = $this->executeRequest( $sql , array ( $login ) );
         if ($user->rowCount() == 1)
             return $user->fetch(); // Accès à la première ligne de résultat

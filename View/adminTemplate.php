@@ -1,12 +1,12 @@
-<?php include('View/Template/AdminHeaderTemplate.php'); ?>
+<?php include('Template/AdminHeaderTemplate.php'); ?>
 
 
 
-<?php include('View/Template/AdminNavTemplate.php'); ?>
+<?php include('Template/AdminNavTemplate.php'); ?>
                 <!-- content -->
 
                 <?= $content ?>
 
 
-                <?php include('View/Template/AdminFooterTemplate.php'); ?>
+<?php include('View/Template/AdminFooterTemplate.php'); ?>
 

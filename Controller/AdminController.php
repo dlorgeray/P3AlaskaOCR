@@ -1,8 +1,8 @@
 <?php
-require_once 'Controller/SecureController.php';
-require_once 'Model/Post.php';
-require_once 'Model/Comment.php';
-require_once 'Model/Report.php';
+require_once './Controller/SecureController.php';
+require_once './Model/Post.php';
+require_once './Model/Comment.php';
+require_once './Model/Report.php';
 
 /**
  * Contrôleur des actions d'administration
@@ -84,7 +84,10 @@ class AdminController extends SecureController
     public function editPost ()
     {
         $idPost = $this->request->getSetting( "id" );
-        $post = $this->post->getPost( $idPost );
+        try {
+            $post = $this->post->getPost( $idPost );
+        } catch (Exception $e) {
+        }
         $this->generateView( array ( 'post' => $post ) );
     }
 
