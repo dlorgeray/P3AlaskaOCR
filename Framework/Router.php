@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Framework/Request.php';
-require_once 'Framework/View.php';
-require_once 'Framework/Controller.php';
+require_once './Framework/Request.php';
+require_once './Framework/View.php';
+require_once './Framework/Controller.php';
 
 /*
  * Classe de routage des requêtes entrantes.
@@ -22,7 +22,6 @@ class Router
             // Fusion des paramètres GET et POST de la requête
             // Permet de gérer uniformément ces deux types de requête HTTP
             $request = new Request( array_merge( $_GET , $_POST ) );
-
             $controller = $this->createController( $request );
             $action = $this->createAction( $request );
 
@@ -67,14 +66,17 @@ class Router
     /**
      * Détermine l'action à exécuter en fonction de la requête reçue
      *
-     * @param Requete $requete Requête reçue
+     * @param $requete : Requête reçue
      * @return string Action à exécuter
      */
     private function createAction ( Request $request )
     {
         $action = "index";  // Action par défaut
         if ($request->existSetting( 'action' )) {
-            $action = $request->getSetting( 'action' );
+            try {
+                $action = $request->getSetting( 'action' );
+            } catch (Exception $e) {
+            }
         }
         return $action;
     }

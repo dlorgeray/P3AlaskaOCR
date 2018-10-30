@@ -1,5 +1,5 @@
 <?php
-require_once 'Framework/Config.php';
+require_once './Framework/Config.php';
 
 /**
  * Classe abstraite Modèle.
@@ -38,9 +38,18 @@ abstract class Model
     private function getBdd ()
     {
         if (self::$bdd == null) { // Récupération des paramètres de configuration BD
-            $dsn = Config::get( "dsn" );
-            $login = Config::get( "login" );
-            $mdp = Config::get( "mdp" );
+            try {
+                $dsn = Config::get( "dsn" );
+            } catch (Exception $e) {
+            }
+            try {
+                $login = Config::get( "login" );
+            } catch (Exception $e) {
+            }
+            try {
+                $mdp = Config::get( "mdp" );
+            } catch (Exception $e) {
+            }
             self::$bdd = new PDO( $dsn , $login , $mdp ,
                 array ( PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ) );
         }

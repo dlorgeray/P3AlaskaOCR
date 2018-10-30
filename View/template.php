@@ -1,6 +1,6 @@
-<?php include('View/Template/HeaderTemplate.php'); ?>
+<?php include('Template/HeaderTemplate.php'); ?>
 
     <!-- Main Content -->
                     <?= $content ?>
 
-<?php include('View/Template/FooterTemplate.php'); ?>
+<?php include('Template/FooterTemplate.php'); ?>

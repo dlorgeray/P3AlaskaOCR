@@ -1,5 +1,5 @@
 <section id="banner">
-    <header class="masthead bg-primary text-black-50 text-center text" style="background-image : url('./Content/img/home-bg nb gt.jpg');background-repeat: no-repeat;
+    <header class="masthead bg-primary text-black-50 text-center text" style="background-image : url('../Content/img/home-bg nb gt.jpg');background-repeat: no-repeat;
 	background-size: auto;">>
         <div class="inner">
             <h2>Billet Simple pour l'Alaska</h2>
@@ -26,7 +26,7 @@
                     <br>
                 <ul class="actions">
                     <li>
-                        <a href="post/index/<?= $this->clean( $post['id'] ) ?>" class="button">Lire la suite</a>
+                        <a href="/Post/index/<?= $this->clean( $post['id'] ) ?>" class="button">Lire la suite</a>
                     </li>
                 </ul>
                 </p>

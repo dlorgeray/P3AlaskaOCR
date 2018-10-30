@@ -1,7 +1,7 @@
 <?php
-require_once 'Framework/Request.php';
-require_once 'Framework/View.php';
-require_once 'Framework/Config.php';
+require_once './Framework/Request.php';
+require_once './Framework/View.php';
+require_once './Framework/Config.php';
 
 /**
  * Classe abstraite Controleur
@@ -87,11 +87,14 @@ abstract class Controller
      * Effectue une redirection vers un contrôleur et une action spécifiques
      *
      * @param string $controleur Contrôleur
-     * @param type $action Action Action
+     * @param  $action
      */
     protected function redirect ( $controller , $action = null , $ancre = null )
     {
-        $rootWeb = Config::get( "rootWeb" , "/" );
+        try {
+            $rootWeb = Config::get( "rootWeb" , "/" );
+        } catch (Exception $e) {
+        }
 // Redirection vers l'URL racine_site/controleur/action
         header( "Location:" . $rootWeb . $controller . "/" . $action . $ancre );
     }

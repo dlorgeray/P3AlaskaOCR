@@ -1,6 +1,6 @@
 <?php
-require_once 'Framework/Controller.php';
-require_once 'Model/Admin.php';
+require_once './Framework/Controller.php';
+require_once './Model/Admin.php';
 
 
 /**
@@ -27,7 +27,10 @@ class ConnexionController extends Controller
             $login = $this->request->getSetting( "login" );
             $mdp = $this->request->getSetting( "mdp" );
             if ($this->admin->connect( $login , $mdp )) {
-                $user = $this->admin->getUser( $login );
+                try {
+                    $user = $this->admin->getUser( $login );
+                } catch (Exception $e) {
+                }
                 $this->request->getSession()->setAttribut( "idUser" ,
                     $user['idUser'] );
                 $this->request->getSession()->setAttribut( "login" ,

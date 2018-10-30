@@ -1,9 +1,13 @@
 <?php
 
-require_once 'Framework/Model.php';
+require_once './Framework/Model.php';
 
 class Post extends Model
 {
+
+    const STATUS_PUBLISH = "publié";
+    const STATUS_DRAFT = "brouillon";
+
     /** Renvoie la liste des posts du blog
      *
      * @return PDOStatement La liste des posts
@@ -12,9 +16,10 @@ class Post extends Model
     {
 
         $sql = 'SELECT BIL_ID as id, BIL_DATE as date, BIL_TITLE as title, BIL_CONTENT as content,BIL_STATUS as status 
-                FROM T_BILLET
-                WHERE BIL_STATUS = "publié"
-                ORDER BY BIL_ID';
+                FROM t_billet
+                WHERE BIL_STATUS ="'.
+                self::STATUS_PUBLISH.
+                '" ORDER BY BIL_ID';
         $posts = $this->executeRequest( $sql );
         return $posts;
     }
@@ -23,7 +28,7 @@ class Post extends Model
     {
 
         $sql = 'SELECT BIL_ID as id, BIL_DATE as date, BIL_TITLE as title, BIL_CONTENT as content, BIL_STATUS as status 
-                FROM T_BILLET
+                FROM t_billet
                 ORDER BY BIL_ID';
         $posts = $this->executeRequest( $sql );
         return $posts;
@@ -37,9 +42,9 @@ class Post extends Model
      */
     public function getPost ( $idPost )
     {
-        $sql = 'select BIL_ID as id, BIL_DATE as date,'
-            . ' BIL_TITLE as title, BIL_CONTENT as content from T_BILLET'
-            . ' where BIL_ID=?';
+        $sql = 'SELECT BIL_ID as id, BIL_DATE as date, BIL_TITLE as title, BIL_CONTENT as content, BIL_STATUS as status 
+                FROM t_billet
+                WHERE BIL_ID=?';
         $post = $this->executeRequest( $sql , array ( $idPost ) );
         if ($post->rowCount() > 0)
             return $post->fetch();  // Accès à la première ligne de résultat
@@ -54,7 +59,7 @@ class Post extends Model
      */
     public function getPostsNomber ()
     {
-        $sql = 'SELECT COUNT(*) as nbPosts from T_BILLET';
+        $sql = 'SELECT COUNT(*) as nbPosts from t_billet';
         $result = $this->executeRequest( $sql );
         $line = $result->fetch(); // Le résultat comporte toujours 1 ligne
         return $line['nbPosts'];
@@ -67,15 +72,15 @@ class Post extends Model
      */
     public function create ( $title , $content )
     {
-        $sql = 'INSERT INTO T_BILLET(BIL_TITLE, BIL_CONTENT, BIL_DATE, BIL_STATUS) VALUES(? ,? ,?, ?)';
+        $sql = 'INSERT INTO t_billet(BIL_TITLE, BIL_CONTENT, BIL_DATE, BIL_STATUS) VALUES(? ,? ,?, ?)';
         $date = date( 'Y-m-d H:i:s' );
-        $status = "brouillon";
+        $status = self::STATUS_DRAFT;
         $this->executeRequest( $sql , [ $title , $content , $date , $status ] );
     }
 
     public function publish ( $idPost )
     {
-        $sql = 'UPDATE T_BILLET SET BIL_STATUS = "publié" WHERE BIL_ID = ?';
+        $sql = 'UPDATE t_billet SET BIL_STATUS = "'.self::STATUS_PUBLISH.'" WHERE BIL_ID = ?';
         $this->executeRequest( $sql , [ $idPost ] );
     }
 
@@ -87,7 +92,7 @@ class Post extends Model
      */
     public function update ( $title , $content , $idPost )
     {
-        $sql = 'UPDATE T_BILLET SET BIL_TITLE = ?, BIL_CONTENT = ?, BIL_UPDATE_DATE= ? WHERE BIL_ID = ?';
+        $sql = 'UPDATE t_billet SET BIL_TITLE = ?, BIL_CONTENT = ?, BIL_UPDATE_DATE= ? WHERE BIL_ID = ?';
         $date = date( 'Y-m-d H:i:s' );
         $this->executeRequest( $sql , [ $title , $content , $date , $idPost ] );
     }
@@ -98,7 +103,7 @@ class Post extends Model
      */
     public function deletePost ( $idPost )
     {
-        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = ?; DELETE FROM T_COMMENT WHERE BIL_ID = ?';
+        $sql = 'DELETE FROM t_billet WHERE BIL_ID = ?; DELETE FROM T_COMMENT WHERE BIL_ID = ?';
         $this->executeRequest( $sql , [ $idPost , $idPost ] );
     }
 
@@ -113,7 +118,10 @@ class Post extends Model
      */
     public function getlastPostId ()
     {
-        $sql = 'SELECT t_billet.BIL_ID as id FROM t_billet WHERE BIL_STATUS = "publié" ORDER BY t_billet.BIL_ID DESC LIMIT 1';
+        $sql = 'SELECT t_billet.BIL_ID as id, t_billet.BIL_STATUS as bilstatut 
+                FROM t_billet 
+                WHERE BIL_STATUS = "'.self::STATUS_PUBLISH.
+                '" ORDER BY t_billet.BIL_ID DESC LIMIT 1';
         $req = $this->executeRequest( $sql );
         $post = $req->fetch();
         return $post['id'];

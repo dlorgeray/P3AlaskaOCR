@@ -1,6 +1,6 @@
 <?php
-require_once 'Framework/Controller.php';
-require_once 'Model/Post.php';
+require_once './Framework/Controller.php';
+require_once './Model/Post.php';
 
 class HomeController extends Controller
 {

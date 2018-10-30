@@ -12,7 +12,7 @@
 <!-- menu profile quick info -->
 <div class="profile clearfix">
     <div class="profile_pic">
-        <img src="Content/img/jf.jpg" alt="..." class="img-circle profile_img">
+        <img src="../Content/img/jf.jpg" alt="..." class="img-circle profile_img">
     </div>
     <div class="profile_info">
         <span>Bienvenue,</span>
@@ -37,7 +37,7 @@
             <li><a><i class="fa fa-edit"></i> Gestion Chapitres <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="Admin/writePost">Ecrire un nouveau Chapitre</a></li>
-                    <li><a href="Admin/managepost">Gérer un chapitre existant</a></li>
+                    <li><a href="Admin/managePost">Gérer un chapitre existant</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-comments-o"></i> Gestion commentaires <span class="fa fa-chevron-down"></span></a>
@@ -74,7 +74,7 @@
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
-                        <img src="Content/img/jf.jpg" alt="">Jean Fortercohe
+                        <img src="../Content/img/jf.jpg" alt="">Jean Fortercohe
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">

@@ -1,5 +1,5 @@
 <?php
-require_once 'Framework/Controller.php';
+require_once './Framework/Controller.php';
 
 /**
  * Classe parente des contrôleurs soumis à authentification

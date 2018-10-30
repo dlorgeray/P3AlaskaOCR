@@ -5,7 +5,7 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="Home">Accueil</a>
+            <a class="js-scroll-trigger" href="/Home">Accueil</a>
         </li>
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="Post/listPost">Accès au Roman</a>
@@ -14,7 +14,7 @@
             <a class="js-scroll-trigger" href="#services">A propos de J.Forteroche</a>
         </li>
         <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="Admin">Administration</a>
+            <a class="js-scroll-trigger" href="/Admin">Administration</a>
         </li>
     </ul>
 </nav>

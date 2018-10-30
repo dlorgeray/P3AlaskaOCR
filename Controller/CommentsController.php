@@ -1,8 +1,8 @@
 <?php
-require_once 'Model/Post.php';
-require_once 'Model/Comment.php';
-require_once 'Framework/Controller.php';
-require_once 'Framework/Request.php';
+require_once './Model/Post.php';
+require_once './Model/Comment.php';
+require_once './Framework/Controller.php';
+require_once './Framework/Request.php';
 
 /**
  * Contrôleur des actions liées aux commentaires
