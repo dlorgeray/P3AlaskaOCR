@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Session.php';
+require_once './Framework/Session.php';
 
 /*
  * Classe modélisant une requête HTTP entrante

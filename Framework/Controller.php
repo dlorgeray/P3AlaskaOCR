@@ -1,7 +1,7 @@
 <?php
-require_once 'Framework/Request.php';
-require_once 'Framework/View.php';
-require_once 'Framework/Config.php';
+require_once './Framework/Request.php';
+require_once './Framework/View.php';
+require_once './Framework/Config.php';
 
 /**
  * Classe abstraite Controleur
@@ -18,6 +18,8 @@ abstract class Controller
     /** Action à réaliser */
     private $action;
 
+    private $template = View::MAIN_LAYOUT;
+
     /**
      * Définit la requête entrante
      *
@@ -27,6 +29,7 @@ abstract class Controller
     {
         $this->request = $request;
     }
+
 
     /**
      * Exécute l'action à réaliser.
@@ -52,6 +55,14 @@ abstract class Controller
     public abstract function index ();
 
     /**
+     * @param mixed $template
+     */
+    public function setTemplate ( $template )
+    {
+        $this->template = $template;
+    }
+
+    /**
      * Génère la vue associée au contrôleur courant
      *
      * @param array $donnees Vue Données nécessaires pour la génération de la vue
@@ -68,7 +79,7 @@ abstract class Controller
         $classController = get_class( $this );
         $controllerView = str_replace( "Controller" , "" , $classController );
         // Instanciation et génération de la view
-        $view = new View( $actionView , $controllerView );
+        $view = new View( $actionView , $controllerView , $this->template );
         $view->generate( $datasView );
     }
 
@@ -76,12 +87,15 @@ abstract class Controller
      * Effectue une redirection vers un contrôleur et une action spécifiques
      *
      * @param string $controleur Contrôleur
-     * @param type $action Action Action
+     * @param  $action
      */
-    protected function redirect ( $controller , $action = null )
+    protected function redirect ( $controller , $action = null , $ancre = null )
     {
-        $rootWeb = Config::get( "rootWeb" , "/" );
+        try {
+            $rootWeb = Config::get( "rootWeb" , "/" );
+        } catch (Exception $e) {
+        }
 // Redirection vers l'URL racine_site/controleur/action
-        header( "Location:" . $rootWeb . $controller . "/" . $action );
+        header( "Location:" . $rootWeb . $controller . "/" . $action . $ancre );
     }
 }

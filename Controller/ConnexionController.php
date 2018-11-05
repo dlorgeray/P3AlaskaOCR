@@ -1,6 +1,6 @@
 <?php
-require_once 'Framework/Controller.php';
-require_once 'Model/User.php';
+require_once './Framework/Controller.php';
+require_once './Model/Admin.php';
 
 
 /**
@@ -8,11 +8,11 @@ require_once 'Model/User.php';
  */
 class ConnexionController extends Controller
 {
-    private $user;
+    private $admin;
 
     public function __construct ()
     {
-        $this->user = new User();
+        $this->admin = new Admin();
     }
 
     public function index ()
@@ -26,8 +26,11 @@ class ConnexionController extends Controller
             $this->request->existSetting( "mdp" )) {
             $login = $this->request->getSetting( "login" );
             $mdp = $this->request->getSetting( "mdp" );
-            if ($this->user->connect( $login , $mdp )) {
-                $user = $this->user->getUser( $login );
+            if ($this->admin->connect( $login , $mdp )) {
+                try {
+                    $user = $this->admin->getUser( $login );
+                } catch (Exception $e) {
+                }
                 $this->request->getSession()->setAttribut( "idUser" ,
                     $user['idUser'] );
                 $this->request->getSession()->setAttribut( "login" ,
@@ -41,7 +44,7 @@ class ConnexionController extends Controller
                 "Action impossible : login ou mot de passe non défini" );
     }
 
-    public function deconnect ()
+    public function disconnect ()
     {
         $this->request->getSession()->destroy();
         $this->redirect( "home" );
