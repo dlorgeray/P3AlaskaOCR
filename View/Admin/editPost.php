@@ -19,7 +19,7 @@
                               name="content"/><?= $this->clean( $post['content'] ) ?></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer votre brouillon</button>
                     <a class="btn btn-success btn-lg"
                        href="<?= "admin/publishPost/" . $this->clean( $post['id'] ) ?>">Publier</a>
                 </div>
