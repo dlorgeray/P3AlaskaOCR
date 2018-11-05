@@ -99,14 +99,13 @@ class AdminController extends SecureController
 
         $idPost = $this->request->getSetting( "id" );
         $title = $this->request->getSetting( "title" );
-
         if ($this->request->existSetting( "content" )) {
             $content = $this->request->getSetting( "content" );
         } else {
             $content = '';
         }
 
-        $this->post->update( $title , $content , $idPost );
+        $this->post->update( $title , $content , $idPost);
         $this->redirect( 'admin' , 'editPost/' . $idPost );
     }
 

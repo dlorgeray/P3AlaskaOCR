@@ -20,7 +20,11 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                    <a class="btn btn-success btn-lg"
+                       href="<?= "admin/publishPost/" . $this->clean( $post['id'] ) ?>">Publier</a>
                 </div>
+
+
             </form>
         </div>
 
