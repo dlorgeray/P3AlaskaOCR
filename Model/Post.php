@@ -90,11 +90,11 @@ class Post extends Model
      * @param $content
      * @param $idPost
      */
-    public function update ( $title , $content , $idPost )
+    public function update ( $title , $content , $idPost)
     {
-        $sql = 'UPDATE t_billet SET BIL_TITLE = ?, BIL_CONTENT = ?, BIL_UPDATE_DATE= ? WHERE BIL_ID = ?';
+        $sql = 'UPDATE t_billet SET BIL_TITLE = ?, BIL_CONTENT = ?, BIL_UPDATE_DATE= ?, BIL_STATUS = "'.self::STATUS_DRAFT.'"WHERE BIL_ID = ?';
         $date = date( 'Y-m-d H:i:s' );
-        $this->executeRequest( $sql , [ $title , $content , $date , $idPost ] );
+        $this->executeRequest( $sql , [ $title , $content , $date , $idPost] );
     }
 
     /**

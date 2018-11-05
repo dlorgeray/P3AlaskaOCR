@@ -14,7 +14,6 @@
                     <tr>
                         <th scope="col">Titre</th>
                         <th scope="col">Date de création</th>
-                        <th scope="col">Statut</th>
                         <th scope="col">Modification</th>
                         <th scope="col">Publication</th>
                         <th scope="col">Supprimer</th>
@@ -29,9 +28,18 @@
                             </td>
                             <td><a class="btn btn-primary btn-xs"
                                    href="<?= "admin/editPost/" . $this->clean( $post['id'] ) ?>">Editer</a></td>
-                            <td><?= $this->clean( $post['status'] ) ?></td>
-                            <td><a class="btn btn-success btn-xs"
-                                   href="<?= "admin/publishPost/" . $this->clean( $post['id'] ) ?>">Publier</a></td>
+                            <td><?php if ($post['status'] === "brouillon" )
+                                { ?>
+                                <a class="btn btn-success btn-xs"
+                                   href="<?= "admin/publishPost/" . $this->clean( $post['id'] ) ?>">Publier</a>
+                                <?php }
+                                else {
+                                ?>
+                                  publié
+                                <?php
+                                }
+                                ?>
+                            </td>
                             <td><a class="btn btn-danger btn-xs""
                                 href="<?= "admin/deletePost/" . $this->clean( $post['id'] ) ?>">Supprimer</a></td>
                         </tr>
