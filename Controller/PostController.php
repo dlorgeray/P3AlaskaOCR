@@ -52,11 +52,13 @@ class PostController extends Controller
         $idPost = $this->request->getSetting( "id" );
         $author = $this->request->getSetting( "author" );
         $content = $this->request->getSetting( "content" );
-if($pb){
+        if (strlen( $content ) < 25) {
+            $this->request->getSession()->setFlash( 'Votre commentaire est trop court' , 'danger' );
 
-}else{
-        $this->comment->addComment( $author , $content , $idPost );
-        $this->request->getSession()->setFlash( 'Commentaire ajouté' , 'success' );}
+        } else {
+            $this->comment->addComment( $author , $content , $idPost );
+            $this->request->getSession()->setFlash( 'Commentaire ajouté' , 'success' );
+        }
         $this->redirect( 'Post' , 'index/' . $idPost . '#comment' );
     }
 
