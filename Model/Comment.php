@@ -55,6 +55,7 @@ class Comment extends Model
     }
 
     /**
+     * Cette methode permet de recuperer l'ensemble des commentaires. Si le parametre $only_reproted vaut 1, seuls les commentaires signalés ressortiront
      * @return mixed
      */
     public function getAllComments ( $only_reported = false )
