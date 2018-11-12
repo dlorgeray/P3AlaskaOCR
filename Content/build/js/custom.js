@@ -144,7 +144,7 @@ function init_sidebar() {
             mouseWheel: {preventDefault: true}
         });
     }
-};
+}
 // /Sidebar
 
 var randNum = function () {
@@ -460,7 +460,7 @@ function init_flot_chart() {
             tickColor: "rgba(51, 51, 51, 0.06)",
         },
         tooltip: false
-    }
+    };
 
     var chart_plot_02_settings = {
         grid: {
@@ -590,8 +590,6 @@ function init_flot_chart() {
         }], chart_plot_03_settings);
 
     }
-    ;
-
 }
 
 
@@ -618,9 +616,7 @@ function init_starrr() {
         $('.stars-count-existing').html(value);
     });
 
-};
-
-
+}
 function init_JQVmap() {
 
     //console.log('check init_JQVmap [' + typeof (VectorCanvas) + '][' + typeof (jQuery.fn.vectorMap) + ']' );
@@ -665,9 +661,7 @@ function init_JQVmap() {
 
     }
 
-};
-
-
+}
 function init_skycons() {
 
     if (typeof (Skycons) === 'undefined') {
@@ -736,7 +730,7 @@ function init_chart_doughnut() {
                 legend: false,
                 responsive: false
             }
-        }
+        };
 
         $('.canvasDoughnut').each(function () {
 
@@ -931,9 +925,7 @@ function init_sparklines() {
     });
 
 
-};
-
-
+}
 /* AUTOCOMPLETE */
 
 function init_autocomplete() {
@@ -1223,8 +1215,7 @@ function init_autocomplete() {
         lookup: countriesArray
     });
 
-};
-
+}
 /* AUTOSIZE */
 
 function init_autosize() {
@@ -1235,8 +1226,7 @@ function init_autosize() {
 
     }
 
-};
-
+}
 /* PARSLEY */
 
 function init_parsley() {
@@ -1285,9 +1275,7 @@ function init_parsley() {
     } catch (err) {
     }
 
-};
-
-
+}
 /* INPUTS */
 
 function onAddTag(tag) {
@@ -1313,8 +1301,7 @@ function init_TagsInput() {
 
     }
 
-};
-
+}
 /* SELECT2 */
 
 function init_select2() {
@@ -1335,8 +1322,7 @@ function init_select2() {
         allowClear: true
     });
 
-};
-
+}
 /* WYSIWYG EDITOR */
 
 function init_wysiwyg() {
@@ -1411,8 +1397,7 @@ function init_wysiwyg() {
     window.prettyPrint;
     prettyPrint();
 
-};
-
+}
 /* CROPPER */
 
 function init_cropper() {
@@ -1646,8 +1631,7 @@ function init_cropper() {
     }
 
 
-};
-
+}
 /* CROPPER --- end */
 
 /* KNOB */
@@ -1756,8 +1740,7 @@ function init_knob() {
         }
     });
 
-};
-
+}
 /* INPUT MASK */
 
 function init_InputMask() {
@@ -1769,8 +1752,7 @@ function init_InputMask() {
 
     $(":input").inputmask();
 
-};
-
+}
 /* COLOR PICKER */
 
 function init_ColorPicker() {
@@ -1794,9 +1776,7 @@ function init_ColorPicker() {
 
     $('.demo-auto').colorpicker();
 
-};
-
-
+}
 /* ION RANGE SLIDER */
 
 function init_IonRangeSlider() {
@@ -1867,9 +1847,7 @@ function init_IonRangeSlider() {
         }
     });
 
-};
-
-
+}
 /* DATERANGEPICKER */
 
 function init_daterangepicker() {
@@ -2107,9 +2085,7 @@ function init_SmartWizard() {
     $('.buttonPrevious').addClass('btn btn-primary');
     $('.buttonFinish').addClass('btn btn-default');
 
-};
-
-
+}
 /* VALIDATOR */
 
 function init_validator() {
@@ -2147,8 +2123,7 @@ function init_validator() {
         return false;
     });
 
-};
-
+}
 /* PNotify */
 
 function init_PNotify() {
@@ -2157,9 +2132,7 @@ function init_PNotify() {
         return;
     }
     console.log('init_PNotify');
-};
-
-
+}
 /* CUSTOM NOTIFICATION */
 
 function init_CustomNotification() {
@@ -2217,8 +2190,7 @@ function init_CustomNotification() {
         $('#notif-group div').first().css('display', 'block');
     });
 
-};
-
+}
 /* EASYPIECHART */
 
 function init_EasyPieChart() {
@@ -2278,9 +2250,7 @@ function init_EasyPieChart() {
         }
     });
 
-};
-
-
+}
 function init_charts() {
 
     console.log('run_charts  typeof [' + typeof (Chart) + ']');
@@ -2698,8 +2668,7 @@ function init_compose() {
         $('.compose').slideToggle();
     });
 
-};
-
+}
 /* CALENDAR */
 
 function init_calendar() {
@@ -2803,8 +2772,7 @@ function init_calendar() {
         }]
     });
 
-};
-
+}
 /* DATA TABLES */
 
 function init_DataTables() {
@@ -2892,8 +2860,7 @@ function init_DataTables() {
 
     TableManageButtons.init();
 
-};
-
+}
 /* CHART - MORRIS  */
 
 function init_morris_charts() {
@@ -3051,9 +3018,7 @@ function init_morris_charts() {
 
     }
 
-};
-
-
+}
 /* ECHRTS */
 
 
