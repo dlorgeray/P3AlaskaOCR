@@ -17,4 +17,9 @@ class HomeController extends Controller
         $posts = $this->post->getPosts();
         $this->generateView( array ( 'posts' => $posts ) );
     }
+
+    public function bibliography ()
+    {
+        $this->generateView();
+    }
 }
