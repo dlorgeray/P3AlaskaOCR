@@ -9,6 +9,9 @@ require_once './Model/Report.php';
  */
 class AdminController extends SecureController
 {
+    /**
+     * @var
+     */
     private $post;
     private $comment;
     private $report;
@@ -25,6 +28,9 @@ class AdminController extends SecureController
 
     }
 
+    /**
+     * Action par défaut
+     */
     public function index ()
     {
         $nbPosts = $this->post->getPostsNomber();
@@ -39,6 +45,10 @@ class AdminController extends SecureController
 
     }
 
+
+    /**
+     * Action de charger la page de gestion des billets
+     */
     public function managePost ()
     {
         $nbPosts = $this->post->getPostsNomber();
@@ -52,7 +62,7 @@ class AdminController extends SecureController
     }
 
     /**
-     * Ecrire un nouveau chapitre du roman
+     * Action de sauvegarder un nouveau chapitre du roman
      */
     public function writingPost ()
     {
@@ -66,6 +76,9 @@ class AdminController extends SecureController
         $this->redirect( 'Admin' , 'index/' );
     }
 
+    /**
+     * Publier un nouveau chapitre
+     */
     public function publishPost ()
     {
         $idPost = $this->request->getSetting( "id" );
@@ -74,7 +87,7 @@ class AdminController extends SecureController
     }
 
     /**
-     * Sauvegarde des modifications d'un chapitre
+     * Sauvegarde en statut brouillon des modifications d'un chapitre existant
      */
     public function savePost ()
     {
@@ -85,24 +98,20 @@ class AdminController extends SecureController
         } else {
             $content = '';
         }
-        if (isset($_POST['Enregistrer'])) {
-
-            $this->post->update( $title , $content , $idPost );
-        }
-        else if (isset($_POST['Publier'])){
-
-            $this->post->updatePublish( $title , $content, $idPost );
-        }
+        $this->post->update( $title , $content , $idPost, isset($_POST['Publier']) );
         $this->redirect( 'Admin' , 'managePost/' );
     }
 
+    /**
+     * Action de charger la page d'écriture d'un nouveau billet
+     */
     public function writePost ()
     {
         $this->generateView();
     }
 
     /**
-     * Editer un chapitre existant
+     * Action de charger la page d'édition d'un chapitre existant
      */
     public function editPost ()
     {
@@ -114,14 +123,18 @@ class AdminController extends SecureController
         $this->generateView( array ( 'post' => $post ) );
     }
 
-
+    /**
+     * Action de supprimer un billet
+     */
     public function deletePost ()
     {
         $idPost = $this->request->getSetting( 'id' );
         $this->post->deletePost( $idPost );
         $this->redirect( 'Admin' , 'managePost/' . $idPost );
     }
-
+    /**
+     * Action de supprimer un commentaire
+     */
     public function deleteComment ()
     {
         $idPost = $this->request->getSetting( 'idComment' );
@@ -129,19 +142,27 @@ class AdminController extends SecureController
         $this->redirect( 'Admin' , 'allComments/' );
     }
 
+    /**
+     * Action de charger la page de la liste de tous les commentaires
+     */
     public function allComments ()
     {
         $allComments = $this->comment->getAllComments( false );
         $this->generateView( array ( 'allComments' => $allComments ) );
     }
 
+    /**
+     * Action de charger la page de la liste de tous les commentaires signalés
+     */
     public function reportedComments ()
     {
         $reportedComments = $this->comment->getAllComments( true );
         $this->generateView( array ( 'reportedComments' => $reportedComments ) );
     }
 
-    // Action to delete a comment and its reports when exist from DB
+    /**
+     * Action de supprimer un commentaire signalé
+     */
     public function deleteReportedComment ()
     {
         $idComment = $this->request->getSetting( 'id' );
@@ -149,7 +170,9 @@ class AdminController extends SecureController
         $this->redirect( 'Admin' , 'allComments/' );
     }
 
-    // Action to validate - moderate an existing comment by removing reports
+    /**
+     * Action de valider un commentaire qui a été signalé
+     */
     public function valideReportedComment ()
     {
         $idComment = $this->request->getSetting( "id" );

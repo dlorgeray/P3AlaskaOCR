@@ -12,6 +12,7 @@ class HomeController extends Controller
     }
 
     // Affiche la liste de tous les posts du blog
+
     public function index ()
     {
         $posts = $this->post->getPosts();

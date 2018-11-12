@@ -20,6 +20,9 @@ class ConnexionController extends Controller
         $this->generateView();
     }
 
+    /**
+     * Controller qui gère la connection au backend
+     */
     public function connect ()
     {
         if ($this->request->existSetting( "login" ) &&
@@ -44,6 +47,9 @@ class ConnexionController extends Controller
                 "Action impossible : login ou mot de passe non défini" );
     }
 
+    /**
+     * Controller qui gère la déconnection au backend
+     */
     public function disconnect ()
     {
         $this->request->getSession()->destroy();

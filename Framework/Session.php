@@ -63,8 +63,14 @@ class Session
         return (isset( $_SESSION[$name] ) && $_SESSION[$name] != "");
     }
 
+
+    /**
+    * @var TYPE_NAME $type
+    */
+
     public function setFlash ( $message , $type = 'error' )
     {
+
         $_SESSION['flash'] = array (
             'message' => $message ,
             'type' => $type );

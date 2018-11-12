@@ -42,12 +42,10 @@ class PostController extends Controller
 
 
     /**
-     * Ajoute un commentaire à un post
-     * @throws Exception
+     * Ajoute un commentaire à un billet
      */
-    public
-    function comment ()
-    {
+    public function comment () {
+
         $this->request->getSetting( "content" );
         $idPost = $this->request->getSetting( "id" );
         $author = $this->request->getSetting( "author" );
@@ -62,9 +60,11 @@ class PostController extends Controller
         $this->redirect( 'Post' , 'index/' . $idPost . '#comment' );
     }
 
-    public
-    function reportComment ()
-    {
+    /**
+     * Signalement d'un commentaire
+     */
+    public function reportComment () {
+
         $commentId = $this->request->getSetting( "idComment" );
         $idPost = $this->request->getSetting( "idPost" );
         $this->comment->report( $commentId );
@@ -72,16 +72,20 @@ class PostController extends Controller
         $this->redirect( 'Post' , 'index/' . $idPost . '#comment' );
     }
 
-    public
-    function listPost ()
-    {
+    /**
+     * Affiche l'ensemble des billets publiés
+     */
+    public function listPost () {
+
         $posts = $this->post->getPublishPosts();
         $this->generateView( array ( 'posts' => $posts ) );
     }
 
-    public
-    function lastPost ()
-    {
+    /**
+     * Affiche le dernier billet publié
+     */
+    public function lastPost () {
+
         $idPost = $this->post->getlastPostId();
         $this->redirect( 'Post' , 'index/' . $idPost );
     }
