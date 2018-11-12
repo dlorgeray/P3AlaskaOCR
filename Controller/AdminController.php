@@ -73,6 +73,29 @@ class AdminController extends SecureController
         $this->redirect( 'Admin' , 'managePost/' );
     }
 
+    /**
+     * Sauvegarde des modifications d'un chapitre
+     */
+    public function savePost ()
+    {
+        $idPost = $this->request->getSetting( "id" );
+        $title = $this->request->getSetting( "title" );
+        if ($this->request->existSetting( "content" )) {
+            $content = $this->request->getSetting( "content" );
+        } else {
+            $content = '';
+        }
+        if (isset($_POST['Enregistrer'])) {
+
+            $this->post->update( $title , $content , $idPost );
+        }
+        else if (isset($_POST['Publier'])){
+
+            $this->post->updatePublish( $title , $content, $idPost );
+        }
+        $this->redirect( 'Admin' , 'managePost/' );
+    }
+
     public function writePost ()
     {
         $this->generateView();
@@ -91,23 +114,6 @@ class AdminController extends SecureController
         $this->generateView( array ( 'post' => $post ) );
     }
 
-    /**
-     * Sauvegarde des modifications d'un chapitre
-     */
-    public function savePost ()
-    {
-
-        $idPost = $this->request->getSetting( "id" );
-        $title = $this->request->getSetting( "title" );
-        if ($this->request->existSetting( "content" )) {
-            $content = $this->request->getSetting( "content" );
-        } else {
-            $content = '';
-        }
-
-        $this->post->update( $title , $content , $idPost);
-        $this->redirect( 'admin' , 'editPost/' . $idPost );
-    }
 
     public function deletePost ()
     {

@@ -97,6 +97,13 @@ class Post extends Model
         $this->executeRequest( $sql , [ $title , $content , $date , $idPost] );
     }
 
+    public function updatePublish ( $title , $content , $idPost)
+    {
+        $sql = 'UPDATE t_billet SET BIL_TITLE = ?, BIL_CONTENT = ?, BIL_UPDATE_DATE= ?, BIL_STATUS = "'.self::STATUS_PUBLISH.'"WHERE BIL_ID = ?';
+        $date = date( 'Y-m-d H:i:s' );
+        $this->executeRequest( $sql , [ $title , $content , $date , $idPost] );
+    }
+
     /**
      * Suppression d'un chapitre et des éventuels commentaires associés
      * @param $idPost
