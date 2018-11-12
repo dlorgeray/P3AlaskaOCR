@@ -11,7 +11,7 @@
             <a class="js-scroll-trigger" href="Post/listPost">Accès au Roman</a>
         </li>
         <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="#services">A propos de J.Forteroche</a>
+            <a class="js-scroll-trigger" href="Home/bibliography">A propos de J.Forteroche</a>
         </li>
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="/Admin">Administration</a>
