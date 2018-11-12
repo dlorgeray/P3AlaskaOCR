@@ -34,7 +34,6 @@ abstract class Controller
     /**
      * Exécute l'action à réaliser.
      * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant
-     *
      * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
      */
     public function executeAction ( $action )
@@ -65,28 +64,22 @@ abstract class Controller
 
     /**
      * Génère la vue associée au contrôleur courant
-     *
-     * @param array $donnees Vue Données nécessaires pour la génération de la vue
+     * @param array $datasView Données nécessaires pour la génération de la vue
      */
     protected function generateView ( $datasView = array () , $action = null )
     {
-        // Utilisation de l'action actuelle par défaut
         $actionView = $this->action;
         if ($action != null) {
-            // Utilisation de l'action passée en paramètre
             $actionView = $action;
         }
-        // Utilisation du nom du contrôleur actuel
         $classController = get_class( $this );
         $controllerView = str_replace( "Controller" , "" , $classController );
-        // Instanciation et génération de la view
         $view = new View( $actionView , $controllerView , $this->template );
         $view->generate( $datasView );
     }
 
     /**
-     * Effectue une redirection vers un contrôleur et une action spécifiques
-     *
+     * Effectue une redirection vers un contrôleur et une action spécifique
      * @param string $controleur Contrôleur
      * @param  $action
      */
@@ -96,7 +89,6 @@ abstract class Controller
             $rootWeb = Config::get( "rootWeb" , "/" );
         } catch (Exception $e) {
         }
-// Redirection vers l'URL racine_site/controleur/action
         header( "Location:" . $rootWeb . $controller . "/" . $action . $ancre );
     }
 }

@@ -64,14 +64,14 @@
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <label>Pseudo</label>
                         <input class="form-control" name="author" type="text"
-                               placeholder="Votre pseudo" value="" required minlength="3" maxlength="20">
+                               placeholder="Votre pseudo" value="" required minlength="5" maxlength="20">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <label>Votre commentaire</label>
-                        <textarea class="form-control" name="content" rows="5" minlength="10"
+                        <textarea class="form-control" name="content" rows="5" minlength="25"
                                   placeholder="Votre commentaire" required></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
