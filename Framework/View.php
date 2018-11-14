@@ -51,7 +51,6 @@ class View
 
         // On définit une variable locale accessible par la vue pour la racine Web
         // Il s'agit du chemin vers le site sur le serveur Web
-        // Nécessaire pour les URI de type controleur/action/id
         try {
             $rootWeb = Config::get( "rootWeb" , "/" );
         } catch (Exception $e) {
